@@ -1,0 +1,62 @@
+<hr>
+<div>filmes | json() </div>
+<div class="form-inline">
+  <div class="form-group mb-2">
+    <input type="text"
+          class="form-control mb-2"
+          placeholder="Busque por um evento"
+          [(ngModel)]="filtroLista"
+    >
+    <!-- <button class="btn btn-outline-success">Buscar</button> -->
+  </div>
+</div>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>
+         <button class="btn btn-outline-light btn-sm" (click)="alterarImagem()">
+          {{mostrarImagem? 'Ocultar' : 'Exibir'}}
+        </button >
+      </th>
+      <th>#</th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Participantes</th>
+      <th>Lote</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="filmes && filmes.length" >
+    <tr *ngFor="let e of filmesFiltrados">
+
+      <td>
+        <img [collapse]="!mostrarImagem"
+             [isAnimated]="true"
+             src="/assets/{{e.imageURL}}"
+             [style.width.px] = "widthImg"
+             [style.margin.px] = "marginImg"
+             alt=""
+        >
+      </td>
+      <td>{{e.eventoId}}</td>
+      <td>{{e.tema}}</td>
+      <td>{{e.local}}</td>
+      <td>{{e.dataEvento}}</td>
+      <td>{{e.qtdpessoas}}</td>
+      <td>{{e.lote}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm">Excluir </button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr *ngIf="!filmes.length">
+      <td colspan="8" class="text-center">
+        <h4>Não há eventos.</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
