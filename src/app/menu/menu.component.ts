@@ -1,56 +1,40 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import * as bootstrap from 'bootstrap';
+import { FilmsService } from '../films.service';
+import { IFilm } from '../IFilms';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
 
-  public filmes: any = [];
-  public filmesFiltrados: any = [];
+export class MenuComponent implements OnInit{
+  constructor(private filmsService: FilmsService)
+  {}
 
-  widthImg: number = 150;
-  marginImg: number = 2;
-  mostrarImagem: boolean = true;
-
-  private _filtroLista : string = ''
-
-
-  public get filtroLista(){
-    return this._filtroLista;
-  }
-
-  public set filtroLista(value : string){
-    this._filtroLista = value;
-    this.filmesFiltrados = this.filtroLista ? this.filtrarFilmes(this.filtroLista) : this.filmes;
-  }
-
-  public filtrarFilmes(filtro : string) : any{
-    filtro = filtro.toLowerCase();
-    return this.filmes.filter(
-      (filmes : {tema:string; local:string })=> filmes.tema.toLocaleLowerCase().indexOf(filtro)!== -1 ||
-      filmes.local.toLocaleLowerCase().indexOf(filtro)!== -1
-    );
-  }
-
-  constructor(private http: HttpClient) { }
+  listaFilms: any = [];
+  film: any;
+  title: string = "";
+  body: string = "";
 
   ngOnInit(): void {
-    this.getFilmes();
-
+    let myOffcanvas = document.getElementById("offcanvasRight")!;
+    let bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
   }
 
-  alterarImagem(){
-    this.mostrarImagem  = !this.mostrarImagem;
+  async getFilmById(id: number){
+    await this.filmsService.filmsById(id)
+    .then((data) =>  this.getFilms(data))
+    .catch((error)=> console.log(error))  }
+
+  getFilms(data: IFilm){
+    this.film = data;
   }
 
-  public getFilmes() : void {
-    this.http.get('https://swapi.dev/api/films').subscribe(
-      response => {this.filmes = response,
-      this.filmesFiltrados = this.filmes},
-      error => console.log(error),
-    );
+  setInfo(id: number){
+    this.getFilmById(id)
+    this.title = this.film.title
+    this.body = this.film.opening_crawl
   }
 }

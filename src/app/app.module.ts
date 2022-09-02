@@ -7,24 +7,31 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { CollapseModule } from 'ngx-bootstrap/collapse';
+// import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { MenuComponent } from './menu/menu.component';
+import { NavComponent } from './nav/nav.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './modal/modal.component';
+
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    NavComponent,
+      ModalComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // FontAwesomeModule,
+    FontAwesomeModule,
     BrowserAnimationsModule,
-    CollapseModule.forRoot(),
-    FormsModule
+    // CollapseModule.forRoot(),
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent, MenuComponent]

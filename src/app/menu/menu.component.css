@@ -1,0 +1,29 @@
+img{
+  max-width: 250px;
+}
+button{
+  background-color: rgb(0, 0, 0);
+  border-color: #212529;
+}
+.menu-page{
+    height: 1080px;
+    background-image: url(https://i.pinimg.com/564x/d7/a6/11/d7a61190a836bdcfc62bf97af4f4c74b.jpg);
+
+}
+.search-form{
+  padding-top: 20px;
+  padding-left: 10%;
+  width: 350px;
+}
+.search-form-input{
+  background-color: #212529;
+  color: white;
+}
+.table-films{
+  width: 80%;
+  margin-left: 10%;
+}
+.row{
+  padding: 10%;
+  padding-bottom: 0%;
+}
