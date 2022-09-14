@@ -17,11 +17,11 @@ import { ModalComponent } from './modal/modal.component';
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     MenuComponent,
     NavComponent,
-      ModalComponent
+    ModalComponent
    ],
   imports: [
     BrowserModule,
@@ -33,6 +33,7 @@ import { ModalComponent } from './modal/modal.component';
     FormsModule,
     NgbModule
   ],
+  exports:[ModalComponent],
   providers: [],
   bootstrap: [AppComponent, MenuComponent]
 })
