@@ -11,7 +11,7 @@ export class PeopleService {
 constructor(private httpClient: HttpClient) { }
 
   getAllPeoples(){
-    return this.httpClient.get<IPeople[]>(`${API_PATH}/people`).toPromise();
+    return this.httpClient.get<IPeople[]>(`${API_PATH}/people`);
   }
   getPeopleById(id: number){
     return this.httpClient.get<IPeople>(`${API_PATH}/people/${id}`).toPromise();
