@@ -9,6 +9,7 @@ import { StarshipsComponent } from './pages/starships/starships.component';
 import { VehiclesComponent } from './pages/vehicles/vehicles.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: '/menu/films', pathMatch: 'full' },
   {path: 'menu/films',  component: MenuComponent},
   {path: 'menu/starships', component: StarshipsComponent},
   {path: 'menu/people', component: PeopleComponent},
