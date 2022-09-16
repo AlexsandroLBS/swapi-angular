@@ -1,8 +1,10 @@
-img {
-  max-width: 5%;
-  max-height: 5%;
- }
-.logo-star-wars{
-  width: 10px;
-  height: 10px;
+ul{
+  padding-left: 5%;
+}
+#logo-star-wars{
+  max-width: 100%;
+  max-height: 100%;
+}
+.navbar-brand{
+  width: 100px;
 }

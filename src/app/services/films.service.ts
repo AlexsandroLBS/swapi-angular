@@ -10,11 +10,11 @@ export class FilmsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  allFilms(){
+  getAllFilms(){
     return this.httpClient.get<IFilm[]>(`${API_PATH}/films`).toPromise();
   }
 
-  filmsById(id: number){
+  getFilmsById(id: number){
      return this.httpClient.get<IFilm>(`${API_PATH}/films/${id}`).toPromise();
   }
 }

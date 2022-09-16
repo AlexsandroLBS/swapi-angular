@@ -11,12 +11,11 @@ export class ModalComponent implements OnInit {
   constructor( private modalService: ModalService) {
     this.modalService.host = this;
    }
-  @Input() title: string = "";
-  @Input() body: string = "";
-  @Input() director: string = "";
-  @Input() releaseDate: string = "";
+  @Input() title: string = '';
+  @Input() body: string = '';
+  @Input() director: string = '';
+  @Input() releaseDate: string = '';
 
   ngOnInit() {
   }
-
 }

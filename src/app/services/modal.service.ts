@@ -14,18 +14,26 @@ export class ModalService {
   constructor(private filmsService: FilmsService){
 
   }
+  clearData(){
+    console.log('Limpou saporra');
+    this.host.title = '';
+    this.host.director = '';
+    this.host.releaseDate = '';
+    this.host.body = '';
+  }
+
 
   //FILMES
   getFilmById(id: number){
-      this.filmsService.filmsById(id)
+      this.filmsService.getFilmsById(id)
       .then((data) => {
         this.film = data
-        this.setInfo(this.film)
+        this.setInfoFilms(this.film)
       })
       .catch((error)=> console.log(error))
     }
 
-    setInfo(data: IFilm){
+    setInfoFilms(data: IFilm){
       this.host.title = data.title;
       this.host.director = `Director: ${data.director}`;
       this.host.releaseDate = `Release Date: ${data.release_date}`;
