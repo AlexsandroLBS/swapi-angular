@@ -1,5 +1,12 @@
 <!-- FILMES -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightFilms" aria-labelledby="offcanvasRightLabel">
+
+  <div *ngIf="!title"  class="d-flex justify-content-center">
+  <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div >
+
   <div class="offcanvas-header">
     <h2 id="offcanvasRightLabel title">{{title}}</h2>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -18,6 +25,11 @@
 </div>
 <!-- PLANETAS -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightPlanets" aria-labelledby="offcanvasRightLabel">
+  <div *ngIf="!title"  class="d-flex justify-content-center">
+    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div >
   <div class="offcanvas-header">
     <h2 id="offcanvasRightLabel title">{{title}}</h2>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -26,18 +38,29 @@
     {{body}}
   </div>
 </div>
-<!-- Personagens -->
+<!-- PEOPLE -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightPeople" aria-labelledby="offcanvasRightLabel">
+  <div *ngIf="!title"  class="d-flex justify-content-center">
+    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div >
   <div class="offcanvas-header">
     <h2 id="offcanvasRightLabel title">{{title}}</h2>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
+    <h5>{{homeworld}}</h5>
     {{body}}
   </div>
 </div>
 <!-- Veiculos -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightVehicles" aria-labelledby="offcanvasRightLabel">
+  <div *ngIf="!title"  class="d-flex justify-content-center">
+    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div >
   <div class="offcanvas-header">
     <h2 id="offcanvasRightLabel title">{{title}}</h2>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -48,6 +71,11 @@
 </div>
 <!-- Naves -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightStarships" aria-labelledby="offcanvasRightLabel">
+  <div *ngIf="!title"  class="d-flex justify-content-center">
+    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div >
   <div class="offcanvas-header">
     <h2 id="offcanvasRightLabel title">{{title}}</h2>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -58,6 +86,11 @@
 </div>
 <!-- Espécies -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightSpecies" aria-labelledby="offcanvasRightLabel">
+  <div *ngIf="!title"  class="d-flex justify-content-center">
+    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div >
   <div class="offcanvas-header">
     <h2 id="offcanvasRightLabel title">{{title}}</h2>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>

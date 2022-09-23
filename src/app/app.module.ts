@@ -14,6 +14,12 @@ import { MenuComponent } from './menu/menu.component';
 import { NavComponent } from './nav/nav.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
+import { CommonModule } from '@angular/common';
+import { PeopleComponent } from './pages/people/people.component';
+import { PlanetsComponent } from './pages/planets/planets.component';
+import { SpeciesComponent } from './pages/species/species.component';
+import { VehiclesComponent } from './pages/vehicles/vehicles.component';
+import { StarshipsComponent } from './pages/starships/starships.component';
 
 
 @NgModule({
@@ -21,16 +27,24 @@ import { ModalComponent } from './modal/modal.component';
     AppComponent,
     MenuComponent,
     NavComponent,
-    ModalComponent
+    ModalComponent,
+    PeopleComponent,
+    PlanetsComponent,
+    SpeciesComponent,
+    VehiclesComponent,
+    StarshipsComponent,
+    
    ],
   imports: [
+    FormsModule,
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     // CollapseModule.forRoot(),
-    FormsModule,
+
     NgbModule
   ],
   exports:[ModalComponent],

@@ -16,4 +16,7 @@ constructor(private httpClient: HttpClient) { }
   getPeopleById(id: number){
     return this.httpClient.get<IPeople>(`${API_PATH}/people/${id}`).toPromise();
   }
+  getPeopleByLink(url: string){
+    return this.httpClient.get<IPeople>(`${url}`).toPromise();
+  }
 }
