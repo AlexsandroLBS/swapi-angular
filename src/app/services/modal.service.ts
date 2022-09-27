@@ -31,13 +31,7 @@ export class ModalService {
               private vehiclesService: VehiclesService,
               private starshipsService: StarshipsService){}
 
-  clearData(){
-    console.log('Limpou saporra');
-    this.host.title = '';
-    this.host.director = '';
-    this.host.releaseDate = '';
-    this.host.body = '';
-  }
+
 
 
   //FILMES
@@ -57,6 +51,13 @@ export class ModalService {
     this.host.body = data.opening_crawl;
   }
 
+  clearDataFilms(){
+    this.host.title = '';
+    this.host.director = '';
+    this.host.releaseDate = '';
+    this.host.body = '';
+  }
+
   //PEOPLE
   getPeopleByUrl(url: string){
     this.peopleService.getPeopleByLink(url)
@@ -67,13 +68,36 @@ export class ModalService {
     .catch((error)=> console.log(error))
   }
 
+  getPeopleFIlmsList(films: string[]): string []{
+
+    console.log(films)
+    for(let i = 0; i < films.length; i++){
+      this.filmsService.getFilmsByUrl(films[i])
+      .then((data) => {films[i] = (data.title)})
+
+    }
+    return films
+  }
+
   setInfoPeople(data: IPeople){
     this.host.title = data.name;
     this.host.gender = data.gender;
     this.host.height = data.height;
-    this.planetsService.getPlanetByUrl(data.homeworld);
-    this.host.homeworld = this.planets.name;
+    this.host.hairColor = data.hair_color
+    this.host.mass = data.mass
+    this.host.peopleFilms = this.getPeopleFIlmsList(data.films)
+    this.planetsService.getPlanetByUrl(data.homeworld)
+    .then((data) => {this.host.homeworld = data.name});
 
+
+
+  }
+
+  clearDataPeople(){
+    this.host.title = '';
+    this.host.director = '';
+    this.host.releaseDate = '';
+    this.host.body = '';
   }
 
   //PLANETS
@@ -91,5 +115,11 @@ export class ModalService {
     // this.host.gender = data.gender;
     // this.host.height = data.height;
     // this.host.homeworld = '';
+  }
+  clearDataPlanets(){
+    this.host.title = '';
+    this.host.director = '';
+    this.host.releaseDate = '';
+    this.host.body = '';
   }
 }

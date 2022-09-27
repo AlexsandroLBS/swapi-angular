@@ -24,12 +24,15 @@ export class ModalComponent implements OnInit {
   @Input() height: string = '';
   @Input() homeworld: string = '';
   @Input() hairColor: string = '';
+  @Input() mass: string = '';
+  @Input() peopleFilms: string[] = [];
+  @Input() skin_color: string = '';
 
 
   ngOnInit() {
     const myOffcanvas = document.getElementById('offcanvasRightFilms') as any
     myOffcanvas.addEventListener('hide.bs.offcanvas', () => {
-      this.modalService.clearData()
+      this.modalService.clearDataFilms();
 })
   }
 }

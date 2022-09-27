@@ -14,17 +14,20 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
+
         <th scope="col">Gender</th>
+        <th scope="col">Birth Year</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of people">
+      <tr *ngFor="let peop of people">
         <td>
           <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightPeople"
-          aria-controls="offcanvasRight" (click)="getPeopleByUrl(p.url)"> Show Info</button>
+          aria-controls="offcanvasRight" (click)="getPeopleByUrl(peop.url)"> Show Info</button>
         </td>
-        <td>{{ p.name }}</td>
-        <td>{{ p.gender }}</td>
+        <td>{{peop.name }}</td>
+        <td>{{peop.gender }}</td>
+        <td>{{peop.birth_year }}</td>
       </tr>
     </tbody>
   </table>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { IPeople } from 'src/app/interfaces/IPeople';
 import { ModalService } from 'src/app/services/modal.service';
 import { PeopleService } from 'src/app/services/people.service';
+import { PlanetsService } from 'src/app/services/planets.service';
 
 @Component({
   selector: 'app-people',
@@ -12,7 +13,8 @@ import { PeopleService } from 'src/app/services/people.service';
 })
 export class PeopleComponent implements OnInit {
   constructor(private peopleService: PeopleService,
-              private modalService: ModalService) {}
+              private modalService: ModalService,
+              private planetsService: PlanetsService) {}
 
   public _filtroLista: string = '';
   public data: any = [];
@@ -55,4 +57,5 @@ export class PeopleComponent implements OnInit {
   getPeopleByUrl(url: string){
       this.modalService.getPeopleByUrl(url)
   }
+  
 }

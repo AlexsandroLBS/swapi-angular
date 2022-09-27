@@ -16,13 +16,50 @@
        <h5 >{{director}}</h5>
     </div>
     <div class="col-3">{{releaseDate}}</div>
-
   </div>
-
   <div class="offcanvas-body">
     {{body}}
   </div>
 </div>
+<!-- PEOPLE -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightPeople" aria-labelledby="offcanvasRightLabel">
+  <div *ngIf="!title"  class="d-flex justify-content-center">
+    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="title" class="offcanvas-content">
+
+    <div class="offcanvas-header">
+      <h2 id="offcanvasRightLabel title">{{title}}</h2>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <hr>
+    <div class="offcanvas-body">
+      <div class="row justify-content-between">
+    <div class="col-4">
+      <h5>Homeworld: {{homeworld}}</h5>
+      <div class="people-info">
+        <p>Gender: {{gender}}</p>
+        <p>Hair Color: {{hairColor}}</p>
+        <p>Weight: {{mass}} Kg</p>
+        <p>Height: {{height}} cm</p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div id = "films-list">
+        <ul> Films List
+          <li *ngFor="let film of peopleFilms">
+            {{film}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div >
+
 <!-- PLANETAS -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightPlanets" aria-labelledby="offcanvasRightLabel">
   <div *ngIf="!title"  class="d-flex justify-content-center">
@@ -35,22 +72,6 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    {{body}}
-  </div>
-</div>
-<!-- PEOPLE -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightPeople" aria-labelledby="offcanvasRightLabel">
-  <div *ngIf="!title"  class="d-flex justify-content-center">
-    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div >
-  <div class="offcanvas-header">
-    <h2 id="offcanvasRightLabel title">{{title}}</h2>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <h5>{{homeworld}}</h5>
     {{body}}
   </div>
 </div>

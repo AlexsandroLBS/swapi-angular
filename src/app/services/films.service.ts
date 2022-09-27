@@ -17,4 +17,8 @@ export class FilmsService {
   getFilmsById(id: number){
      return this.httpClient.get<IFilm>(`${API_PATH}/films/${id}`).toPromise();
   }
+
+  getFilmsByUrl(url: string){
+    return this.httpClient.get<IFilm>(`${url}`).toPromise();
+ }
 }
