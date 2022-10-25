@@ -6,5 +6,16 @@
 table{
   margin-left: 10%;
   margin-right: 10%;
-  max-width: 80%;
+  width: 80%;
 }
+
+.paginator{
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+}
+
+.pagination{
+  justify-content: end;
+}
+

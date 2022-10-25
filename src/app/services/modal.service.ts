@@ -32,7 +32,9 @@ export class ModalService {
               private starshipsService: StarshipsService){}
 
 
-
+  clearData(){
+    this.host.title = '';
+  }
 
   //FILMES
   getFilmById(id: number){
@@ -51,13 +53,6 @@ export class ModalService {
     this.host.body = data.opening_crawl;
   }
 
-  clearDataFilms(){
-    this.host.title = '';
-    this.host.director = '';
-    this.host.releaseDate = '';
-    this.host.body = '';
-  }
-
   //PEOPLE
   getPeopleByUrl(url: string){
     this.peopleService.getPeopleByLink(url)
@@ -69,8 +64,6 @@ export class ModalService {
   }
 
   getPeopleFIlmsList(films: string[]): string []{
-
-    console.log(films)
     for(let i = 0; i < films.length; i++){
       this.filmsService.getFilmsByUrl(films[i])
       .then((data) => {films[i] = (data.title)})
@@ -80,17 +73,16 @@ export class ModalService {
   }
 
   setInfoPeople(data: IPeople){
-    this.host.title = data.name;
     this.host.gender = data.gender;
     this.host.height = data.height;
-    this.host.hairColor = data.hair_color
-    this.host.mass = data.mass
-    this.host.peopleFilms = this.getPeopleFIlmsList(data.films)
+    this.host.hairColor = data.hair_color;
+    this.host.mass = data.mass;
+    this.host.peopleFilms = this.getPeopleFIlmsList(data.films);
     this.planetsService.getPlanetByUrl(data.homeworld)
     .then((data) => {this.host.homeworld = data.name});
-
-
-
+    this.peopleService.getPeopleImageById(data.url.split('/')[5])
+    .then((result) => {this.host.image_url = result.image,
+    this.host.title = data.name});
   }
 
   clearDataPeople(){

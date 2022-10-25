@@ -33,7 +33,7 @@ import { StarshipsComponent } from './pages/starships/starships.component';
     SpeciesComponent,
     VehiclesComponent,
     StarshipsComponent,
-    
+
    ],
   imports: [
     FormsModule,
@@ -43,8 +43,6 @@ import { StarshipsComponent } from './pages/starships/starships.component';
     HttpClientModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    // CollapseModule.forRoot(),
-
     NgbModule
   ],
   exports:[ModalComponent],

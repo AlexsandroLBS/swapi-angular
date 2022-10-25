@@ -1,24 +1,24 @@
 <!-- FILMES -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightFilms" aria-labelledby="offcanvasRightLabel">
-
   <div *ngIf="!title"  class="d-flex justify-content-center">
-  <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-</div >
-
-  <div class="offcanvas-header">
-    <h2 id="offcanvasRightLabel title">{{title}}</h2>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="row offcanvas-subtitle">
-    <div class="col">
-       <h5 >{{director}}</h5>
+    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
     </div>
-    <div class="col-3">{{releaseDate}}</div>
-  </div>
-  <div class="offcanvas-body">
-    {{body}}
+  </div >
+  <div *ngIf="title" class="offcanvas-content">
+    <div class="offcanvas-header">
+      <h2 id="offcanvasRightLabel title">{{title}}</h2>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="row offcanvas-subtitle">
+      <div class="col">
+        <h5 >{{director}}</h5>
+      </div>
+      <div class="col-3">{{releaseDate}}</div>
+    </div>
+    <div class="offcanvas-body">
+      {{body}}
+    </div>
   </div>
 </div>
 <!-- PEOPLE -->
@@ -37,27 +37,28 @@
     <hr>
     <div class="offcanvas-body">
       <div class="row justify-content-between">
-    <div class="col-4">
-      <h5>Homeworld: {{homeworld}}</h5>
-      <div class="people-info">
-        <p>Gender: {{gender}}</p>
-        <p>Hair Color: {{hairColor}}</p>
-        <p>Weight: {{mass}} Kg</p>
-        <p>Height: {{height}} cm</p>
-      </div>
-    </div>
-    <div class="col-4">
-      <div id = "films-list">
-        <ul> Films List
-          <li *ngFor="let film of peopleFilms">
-            {{film}}
-          </li>
-        </ul>
+        <div class="col-4">
+          <img src="{{image_url}}" style="max-width: 350px; padding-left: 10%;" alt="character_image">
+        </div>
+        <div class="col-4">
+          <h5>Homeworld: {{homeworld}}</h5>
+          <div class="people-info" style="padding-bottom: 50px;">
+            <p>Gender: {{gender}}</p>
+            <p>Hair Color: {{hairColor}}</p>
+            <p>Weight: {{mass}} Kg</p>
+            <p>Height: {{height}} cm</p>
+          </div>
+          <div id = "films-list">
+            <ul> Films List
+              <li *ngFor="let film of peopleFilms">
+                {{film}}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div >
 
 <!-- PLANETAS -->

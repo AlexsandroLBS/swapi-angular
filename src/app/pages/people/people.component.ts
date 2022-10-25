@@ -21,6 +21,9 @@ export class PeopleComponent implements OnInit {
   public people: any = [];
   public filteredPeople: IPeople[] = [];
 
+  public next_page: any ;
+  public previous_page: any;
+
   public get filtroLista(){
     return this._filtroLista;
   }
@@ -36,7 +39,10 @@ export class PeopleComponent implements OnInit {
 
   initTable(){
     this.loadData()
-    .subscribe((response) => {this.data = response,
+    .subscribe((response) => {
+      this.data = response,
+      this.next_page = this.data.next,
+      this.previous_page = this.data.previous,
       this.people = this.data.results,
       this.filteredPeople = this.data.results},
       error => console.log(error));
@@ -49,13 +55,23 @@ export class PeopleComponent implements OnInit {
   filtrarEventos(filtro : string) : any{
     filtro = filtro.toLowerCase();
     return this.filteredPeople.filter(
-      (people : { name:string; url:string })=> people.name.toLocaleLowerCase().indexOf(filtro)!== -1 ||
-      people.url.toLocaleLowerCase().indexOf(filtro)!== -1
+      (people : { name:string; url:string })=> people.name.toLocaleLowerCase().indexOf(filtro)!== -1
     );
   }
 
   getPeopleByUrl(url: string){
       this.modalService.getPeopleByUrl(url)
   }
-  
-}
+
+  changePage(url: string){
+    this.peopleService.getPeopleListByUrl(url)
+    .subscribe((response) => {
+      this.data = response,
+      this.next_page = this.data.next,
+      this.previous_page = this.data.previous,
+      this.people = this.data.results,
+      this.filteredPeople = this.data.results},
+      error => console.log(error));
+    }
+
+  }

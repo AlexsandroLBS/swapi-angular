@@ -7,6 +7,8 @@ export const environment = {
 };
 export const API_PATH = "https://swapi.dev/api"
 
+export const API_CHARACTERS_IMAGES = "https://akabab.github.io/starwars-api/api/id/"
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

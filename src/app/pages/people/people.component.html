@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let peop of people">
+      <tr *ngFor="let peop of filteredPeople">
         <td>
           <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightPeople"
           aria-controls="offcanvasRight" (click)="getPeopleByUrl(peop.url)"> Show Info</button>
@@ -33,4 +33,10 @@
   </table>
 
 <app-modal></app-modal>
+<div class="paginator">
+  <ul class="pagination">
+    <li class="page-item" (click)="changePage(previous_page)"><a class="page-link" >Anterior</a></li>
+    <li class="page-item" (click)="changePage(next_page)"><a class="page-link" >Próximo</a></li>
+  </ul>
+</div>
 </div>

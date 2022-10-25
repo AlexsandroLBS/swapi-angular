@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_PATH } from 'src/environments/environment';
-import { IPeople } from '../interfaces/IPeople';
+import { API_PATH, API_CHARACTERS_IMAGES } from 'src/environments/environment';
+import { IPeople, IPeopleImage } from '../interfaces/IPeople';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +18,12 @@ constructor(private httpClient: HttpClient) { }
   }
   getPeopleByLink(url: string){
     return this.httpClient.get<IPeople>(`${url}`).toPromise();
+  }
+  getPeopleListByUrl(url: string){
+    return this.httpClient.get<IPeople[]>(`${url}`);
+  }
+
+  getPeopleImageById(id: string){
+    return this.httpClient.get<IPeopleImage>(`${API_CHARACTERS_IMAGES}/${id}.json`).toPromise();
   }
 }
