@@ -48,9 +48,7 @@ export class ModalService {
 
   setInfoFilms(data: IFilm){
     this.host.title = data.title;
-    this.host.director = `Director: ${data.director}`;
-    this.host.releaseDate = `Release Date: ${data.release_date}`;
-    this.host.body = data.opening_crawl;
+    this.host.film = data;
   }
 
   //PEOPLE
@@ -73,10 +71,7 @@ export class ModalService {
   }
 
   setInfoPeople(data: IPeople){
-    this.host.gender = data.gender;
-    this.host.height = data.height;
-    this.host.hairColor = data.hair_color;
-    this.host.mass = data.mass;
+    this.host.people = data;
     this.host.peopleFilms = this.getPeopleFIlmsList(data.films);
     this.planetsService.getPlanetByUrl(data.homeworld)
     .then((data) => {this.host.homeworld = data.name});
@@ -85,15 +80,8 @@ export class ModalService {
     this.host.title = data.name});
   }
 
-  clearDataPeople(){
-    this.host.title = '';
-    this.host.director = '';
-    this.host.releaseDate = '';
-    this.host.body = '';
-  }
-
   //PLANETS
-  getPlanetByUrl(url: string){
+  getPlanetByUrl(url: string, set: boolean = true){
     this.planetsService.getPlanetByUrl(url)
       .then((data) => {
         this.planets = data
@@ -102,16 +90,29 @@ export class ModalService {
       .catch((error)=> console.log(error))
     }
 
-  setInfoPlanets(data: IPlanets){
-    // this.host.name = data.name;
-    // this.host.gender = data.gender;
-    // this.host.height = data.height;
-    // this.host.homeworld = '';
+  getPlanetsFilmsList(films: string[]): string []{
+    for(let i = 0; i < films.length; i++){
+      this.filmsService.getFilmsByUrl(films[i])
+      .then((data) => {films[i] = (data.title)})
+
+    }
+    return films
   }
-  clearDataPlanets(){
-    this.host.title = '';
-    this.host.director = '';
-    this.host.releaseDate = '';
-    this.host.body = '';
+
+  getPlanetsResidentsList(residents: string[]): string []{
+    for(let i = 0; i < residents.length; i++){
+      this.peopleService.getPeopleByLink(residents[i])
+      .then((data) => {residents[i] = (data.name)})
+
+    }
+    return residents
+  }
+
+  setInfoPlanets(data: IPlanets){
+    this.host.title = data.name;
+    this.host.planet = data;
+    this.host.residents = this.getPlanetsResidentsList(data.residents);
+    this.host.filmsList = this.getPlanetsFilmsList(data.films);
+
   }
 }

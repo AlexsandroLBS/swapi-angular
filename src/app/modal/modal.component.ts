@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IFilm } from '../interfaces/IFilms';
 import { ModalService } from '../services/modal.service';
 
 @Component({
@@ -14,20 +15,25 @@ export class ModalComponent implements OnInit {
 
   @Input() title: string = '';
 
+  
+
   //FILM
-  @Input() body: string = '';
-  @Input() director: string = '';
-  @Input() releaseDate: string = '';
+  @Input() film: any = [];
 
   //People
-  @Input() gender: string = '';
-  @Input() height: string = '';
+  @Input() people: any = [];
+
   @Input() homeworld: string = '';
-  @Input() hairColor: string = '';
-  @Input() mass: string = '';
   @Input() peopleFilms: string[] = [];
-  @Input() skin_color: string = '';
   @Input() image_url: string = '';
+  
+  //Planet
+  @Input() planet: any = [];
+  @Input() residents: string[] = [];
+  @Input() filmsList: string[] = [];
+
+
+
 
 
   ngOnInit() {

@@ -1,1 +1,42 @@
-<div class="page"></div>
+<div class="page">
+    <div class="form-inline">
+      <div class="form-group mb-2">
+        <input
+          type="text"
+          class="form-control mb-2"
+          placeholder="Busque por um evento"
+          [(ngModel)]="filtroLista"/>
+  
+      </div>
+    </div>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Planet</th>
+          <th scope="col">Rotation Period</th>
+          <th scope="col">Orbital Period</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let planet of filteredPlanets">
+          <td>
+            <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightPlanets"
+            aria-controls="offcanvasRight" (click)="getPlanetByUrl(planet.url)">Show Info</button>
+          </td>
+          <td>{{ planet.name }}</td>
+          <td>{{ planet.rotation_period }}h</td>
+          <td>{{ planet.orbital_period }} Days</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  <app-modal></app-modal>
+  <div class="paginator">
+    <ul class="pagination">
+      <li class="page-item" (click)="changePage(previous_page)"><a class="page-link" >Anterior</a></li>
+      <li class="page-item" (click)="changePage(next_page)"><a class="page-link" >Próximo</a></li>
+    </ul>
+  </div>
+  </div>
+  

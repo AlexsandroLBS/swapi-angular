@@ -11,7 +11,7 @@ export class PlanetsService {
 constructor(private httpClient: HttpClient) {}
   name: string = ''
   getAllPlanets(){
-    return this.httpClient.get<IPlanets[]>(`${API_PATH}/planets`).toPromise();
+    return this.httpClient.get<IPlanets[]>(`${API_PATH}/planets`);
   }
   getPlanetById(id: number){
     return this.httpClient.get<IPlanets>(`${API_PATH}/planets/${id}`).toPromise();
@@ -26,5 +26,9 @@ constructor(private httpClient: HttpClient) {}
       this.name = data.name
     })
     return this.name
+  }
+
+  getPlanetsListByUrl(url: string){
+    return this.httpClient.get<IPlanets[]>(`${url}`);
   }
 }

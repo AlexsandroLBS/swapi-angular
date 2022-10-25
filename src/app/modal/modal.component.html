@@ -12,12 +12,12 @@
     </div>
     <div class="row offcanvas-subtitle">
       <div class="col">
-        <h5 >{{director}}</h5>
+        <h5 >{{film.director}}</h5>
       </div>
-      <div class="col-3">{{releaseDate}}</div>
+      <div class="col-3">{{film.release_date}}</div>
     </div>
     <div class="offcanvas-body">
-      {{body}}
+      {{film.opening_crawl}}
     </div>
   </div>
 </div>
@@ -41,12 +41,12 @@
           <img src="{{image_url}}" style="max-width: 350px; padding-left: 10%;" alt="character_image">
         </div>
         <div class="col-4">
-          <h5>Homeworld: {{homeworld}}</h5>
-          <div class="people-info" style="padding-bottom: 50px;">
-            <p>Gender: {{gender}}</p>
-            <p>Hair Color: {{hairColor}}</p>
-            <p>Weight: {{mass}} Kg</p>
-            <p>Height: {{height}} cm</p>
+          <div class="data-info" style="padding-bottom: 50px;">
+            <p>Homeworld: {{homeworld}}</p>
+            <p>Gender: {{people.gender}}</p>
+            <p>Hair Color: {{people.hair_color}}</p>
+            <p>Weight: {{people.mass}} Kg</p>
+            <p>Height: {{people.height}} cm</p>
           </div>
           <div id = "films-list">
             <ul> Films List
@@ -73,9 +73,44 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    {{body}}
+
+    <div class="row justify-content-between">
+      <div class="col-4">
+        <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+      </div>
+      <div class="col-4">
+
+          <div *ngIf="planet" class="data-info" style="padding-bottom: 50px;">
+            <p>Rotation Period: {{ planet.rotation_period }} h</p>
+            <p>Orbital Period: {{ planet.orbital_period }} Days</p>
+            <p>Diameter: {{ planet.diameter }} km</p>
+            <p>Climate: {{ planet.climate }}</p>
+            <p>Gravity: {{ planet.gravity }}</p>
+            <p>Terrain: {{ planet.terrain }}</p>
+            <p>Surface Water: {{ planet.surface_water }}</p>
+            <p>Population: {{ planet.population }}</p>
+
+          </div>
+          <div id = "films-list">
+            <ul *ngIf="residents.length"><h3>Residents</h3>
+              <li *ngFor="let resident of residents">
+                {{resident}}
+              </li>
+            </ul>
+          </div>
+          <div id = "films-list">
+            <ul *ngIf="filmsList.length"> <h3>Films List</h3>
+              <li *ngFor="let film of filmsList">
+                {{film}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
+
+
 <!-- Veiculos -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightVehicles" aria-labelledby="offcanvasRightLabel">
   <div *ngIf="!title"  class="d-flex justify-content-center">
@@ -88,7 +123,7 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    {{body}}
+    {{film}}
   </div>
 </div>
 <!-- Naves -->
@@ -103,7 +138,7 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    {{body}}
+    {{film}}
   </div>
 </div>
 <!-- Espécies -->
@@ -118,7 +153,7 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    {{body}}
+    {{film}}
   </div>
 </div>
 
