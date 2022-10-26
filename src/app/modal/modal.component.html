@@ -68,18 +68,18 @@
       <span class="visually-hidden">Loading...</span>
     </div>
   </div >
-  <div class="offcanvas-header">
-    <h2 id="offcanvasRightLabel title">{{title}}</h2>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-
-    <div class="row justify-content-between">
-      <div class="col-4">
-        <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+    <div *ngIf="title" class="offcanvas-content">
+      <div class="offcanvas-header">
+        <h2 id="offcanvasRightLabel title">{{title}}</h2>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="col-4">
-
+      <div class="offcanvas-body">
+        
+        <div class="row justify-content-between">
+        <div class="col-4">
+          <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+        </div>
+        <div class="col-4">
           <div *ngIf="planet" class="data-info" style="padding-bottom: 50px;">
             <p>Rotation Period: {{ planet.rotation_period }} h</p>
             <p>Orbital Period: {{ planet.orbital_period }} Days</p>
@@ -89,7 +89,7 @@
             <p>Terrain: {{ planet.terrain }}</p>
             <p>Surface Water: {{ planet.surface_water }}</p>
             <p>Population: {{ planet.population }}</p>
-
+            
           </div>
           <div id = "films-list">
             <ul *ngIf="residents.length"><h3>Residents</h3>
@@ -104,88 +104,92 @@
                 {{film}}
               </li>
             </ul>
+            </div>
           </div>
         </div>
       </div>
-  </div>
-</div>
-
-
-<!-- Veiculos -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightVehicles" aria-labelledby="offcanvasRightLabel">
-  <div *ngIf="!title"  class="d-flex justify-content-center">
-    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
-      <span class="visually-hidden">Loading...</span>
     </div>
-  </div >
-  <div class="offcanvas-header">
-    <h2 id="offcanvasRightLabel title">{{title}}</h2>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <div class="row justify-content-between">
-      <div class="col-4">
-        <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+  
+  
+  <!-- Veiculos -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightVehicles" aria-labelledby="offcanvasRightLabel">
+    <div *ngIf="!title"  class="d-flex justify-content-center">
+      <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
-      <div class="col-4">
-
-          <div *ngIf="vehicle" class="data-info" style="padding-bottom: 50px;">
-            <p>Cargo Capacity: {{ vehicle.cargo_capacity }}</p>
-            <p>Consumables: {{ vehicle.consumables }}</p>
-            <p>Cost In Credits: {{ vehicle.cost_in_credits }}</p>
-            <p>Crew: {{ vehicle.crew }}</p>
-            <p>Manufacturer: {{ vehicle.manufacturer }}</p>
-            <p>Max Atmosphering Speed: {{ vehicle.max_atmosphering_speed }}</p>
-            <p>Model: {{ vehicle.model }}</p>
-            <p>Passengers: {{ vehicle.passengers }}</p>
-            <p>Vehicle Class: {{ vehicle.vehicle_class }}</p>
-
-          </div>
-          <div id = "films-list">
-            <ul *ngIf="vehiclePilots.length"><h3>Pilots</h3>
-              <li *ngFor="let pilot of vehiclePilots">
-                {{pilot}}
-              </li>
-            </ul>
-          </div>
-          <div id = "films-list">
-            <ul *ngIf="vehicleFilms.length"> <h3>Films</h3>
-              <li *ngFor="let film of vehicleFilms">
-                {{film}}
-              </li>
-            </ul>
+    </div >
+      <div *ngIf="title" class="offcanvas-content"> 
+        <div class="offcanvas-header">
+          <h2 id="offcanvasRightLabel title">{{title}}</h2>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="row justify-content-between">
+            <div class="col-4">
+              <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+            </div>
+            <div class="col-4">
+              
+              <div *ngIf="vehicle" class="data-info" style="padding-bottom: 50px;">
+                <p>Cargo Capacity: {{ vehicle.cargo_capacity }}</p>
+                <p>Consumables: {{ vehicle.consumables }}</p>
+                <p>Cost In Credits: {{ vehicle.cost_in_credits }}</p>
+                <p>Crew: {{ vehicle.crew }}</p>
+                <p>Manufacturer: {{ vehicle.manufacturer }}</p>
+                <p>Max Atmosphering Speed: {{ vehicle.max_atmosphering_speed }}</p>
+                <p>Model: {{ vehicle.model }}</p>
+              <p>Passengers: {{ vehicle.passengers }}</p>
+              <p>Vehicle Class: {{ vehicle.vehicle_class }}</p>
+              
+            </div>
+            <div id = "films-list">
+              <ul *ngIf="vehiclePilots.length"><h3>Pilots</h3>
+                <li *ngFor="let pilot of vehiclePilots">
+                  {{pilot}}
+                </li>
+              </ul>
+            </div>
+            <div id = "films-list">
+              <ul *ngIf="vehicleFilms.length"> <h3>Films</h3>
+                <li *ngFor="let film of vehicleFilms">
+                  {{film}}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-  </div>
-</div>
-
-
-<!-- Species -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightSpecies" aria-labelledby="offcanvasRightLabel">
-  <div *ngIf="!title"  class="d-flex justify-content-center">
-    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
-      <span class="visually-hidden">Loading...</span>
     </div>
-  </div >
-  <div class="offcanvas-header">
-    <h2 id="offcanvasRightLabel title">{{title}}</h2>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <div class="row justify-content-between">
-      <div class="col-4">
-        <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
-      </div>
-      <div class="col-4">
+  
 
+  <!-- Species -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightSpecies" aria-labelledby="offcanvasRightLabel">
+    <div *ngIf="!title"  class="d-flex justify-content-center">
+      <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+  </div >
+  <div *ngIf="title" class="offcanvas-content">
+    <div class="offcanvas-header">
+      <h2 id="offcanvasRightLabel title">{{title}}</h2>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="row justify-content-between">
+        <div class="col-4">
+          <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+        </div>
+        <div class="col-4">
+          
           <div *ngIf="specie" class="data-info" style="padding-bottom: 50px;">
-            <p>homeworld: {{ homeworld }}</p>
+            <p>Homeworld: {{ homeworld }}</p>
             <p>Classification: {{ specie.classification }}</p>
             <p>Designation: {{ specie.designation }}</p>
             <p>Skin Colors: {{ specie.skin_colors }}</p>
             <p>Language: {{ specie.language }}</p>
-
+            
           </div>
           <div id = "films-list">
             <ul *ngIf="speciePeople.length"><h3>People</h3>
@@ -203,23 +207,61 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
+  
+  
+  <!-- Naves -->
 
-
-<!-- Naves -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightStarships" aria-labelledby="offcanvasRightLabel">
-  <div *ngIf="!title"  class="d-flex justify-content-center">
-    <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
-      <span class="visually-hidden">Loading...</span>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightStarships" aria-labelledby="offcanvasRightLabel">
+    <div *ngIf="!title"  class="d-flex justify-content-center">
+      <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
     </div>
   </div >
-  <div class="offcanvas-header">
-    <h2 id="offcanvasRightLabel title">{{title}}</h2>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    {{film}}
+
+  <div *ngIf="title" class="offcanvas-content">
+    <div class="offcanvas-header">
+      <h2 id="offcanvasRightLabel title">{{title}}</h2>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="row justify-content-between">
+        <div class="col-4">
+          <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+        </div>
+        <div class="col-4">
+
+            <div *ngIf="starships" class="data-info" style="padding-bottom: 50px;">
+              <p>Model: {{ starships.model }}</p>
+              <p>Manufacturer: {{ starships.manufacturer }}</p>
+              <p>Cost In Credits: {{ starships.cost_in_credits }}</p>
+              <p>Length: {{ starships.length }}</p>
+              <p>Crew: {{ starships.crew }}</p>
+              <p>Passengers: {{ starships.passengers }}</p>
+              <p>Cargo Capacity: {{ starships.cargo_capacity }}</p>
+              <p>Consumables: {{ starships.consumables }}</p>
+              <p>Hyperdrive Rating: {{ starships.hyperdrive_rating }}</p>
+              <p>MGLT: {{ starships.MGLT }}</p>
+
+            </div>
+            <div id = "films-list">
+              <ul *ngIf="starshipsPilots.length"><h3>People</h3>
+                <li *ngFor="let pilot of starshipsPilots">
+                  {{pilot}}
+                </li>
+              </ul>
+            </div>
+            <div id = "films-list">
+              <ul *ngIf="starshipsFilms.length"> <h3>Films</h3>
+                <li *ngFor="let film of starshipsFilms">
+                  {{film}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
-

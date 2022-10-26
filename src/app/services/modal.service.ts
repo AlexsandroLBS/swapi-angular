@@ -3,6 +3,7 @@ import { IFilm } from '../interfaces/IFilms';
 import { IPeople } from '../interfaces/IPeople';
 import { IPlanets } from '../interfaces/IPlanets';
 import { ISpecies } from '../interfaces/ISpecies';
+import { IStarships } from '../interfaces/IStarships';
 import { IVehicles } from '../interfaces/IVehicles';
 import { ModalComponent } from '../modal/modal.component';
 import { FilmsService } from './films.service';
@@ -92,7 +93,7 @@ export class ModalService {
   }
 
   //PLANETS
-  getPlanetByUrl(url: string, set: boolean = true){
+  getPlanetByUrl(url: string){
     this.planetsService.getPlanetByUrl(url)
       .then((data) => {
         this.planets = data
@@ -109,7 +110,7 @@ export class ModalService {
   }
 
   //Vehicles
-  getVehicleByUrl(url: string, set: boolean = true){
+  getVehicleByUrl(url: string){
     this.vehiclesService.getVehicleByUrl(url)
       .then((data) => {
         this.vehicles = data
@@ -126,8 +127,7 @@ export class ModalService {
   }
 
   //Species
-
-  getSpecieByUrl(url: string, set: boolean = true){
+  getSpecieByUrl(url: string){
     this.planetsService.getPlanetByUrl(url)
       .then((data) => {
         this.species = data
@@ -144,5 +144,22 @@ export class ModalService {
     this.planetsService.getPlanetByUrl(data.homeworld)
     .then((data) => {this.host.homeworld = data.name});
 
+  }
+
+  //Starships
+  getStarshipsByUrl(url: string){
+    this.starshipsService.getStarshipByUrl(url)
+      .then((data) => {
+        this.starships = data;
+        this.setInfoStarships(this.starships);
+      })
+      .catch((error)=> console.log(error));
+  }
+
+  setInfoStarships(data: IStarships){
+    this.host.title = data.name;
+    this.host.starships = data;
+    this.host.starshipsFilms = this.getFilmsList(data.films);
+    this.host.starshipsPilots = this.getPeopleList(data.pilots);
   }
 }

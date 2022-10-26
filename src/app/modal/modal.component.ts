@@ -38,6 +38,13 @@ export class ModalComponent implements OnInit {
   @Input() specie: any = [];
   @Input() specieFilms: string[] = [];
   @Input() speciePeople: string[] = [];
+   
+
+  //Starships
+   @Input() starships: any = [];
+   @Input() starshipsFilms: string[] = [];
+   @Input() starshipsPilots: string[] = [];
+ 
 
 
   ngOnInit() {

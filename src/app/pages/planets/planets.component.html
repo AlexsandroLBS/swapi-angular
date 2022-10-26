@@ -32,7 +32,7 @@
     </table>
   
   <app-modal></app-modal>
-  <div class="paginator">
+  <div  class="paginator" *ngIf="filteredPlanets.length">
     <ul class="pagination">
       <li class="page-item" (click)="changePage(previous_page)"><a class="page-link" >Anterior</a></li>
       <li class="page-item" (click)="changePage(next_page)"><a class="page-link" >Próximo</a></li>

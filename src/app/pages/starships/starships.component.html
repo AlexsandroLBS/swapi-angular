@@ -1,1 +1,42 @@
-<div class="page"></div>
+<div class="page">
+    <div class="form-inline">
+      <div class="form-group mb-2">
+        <input
+          type="text"
+          class="form-control mb-2"
+          placeholder="Busque por um evento"
+          [(ngModel)]="filtroLista"/>
+  
+      </div>
+    </div>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Starship</th>
+          <th scope="col">Model </th>
+          <th scope="col">Manufacturer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ss of filteredStarships">
+          <td>
+            <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightStarships"
+            aria-controls="offcanvasRight" (click)="getStarshipsByUrl(ss.url)">Show Info</button>
+          </td>
+          <td>{{ ss.name }}</td>
+          <td>{{ ss.model }}</td>
+          <td>{{ ss.manufacturer }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  <app-modal></app-modal>
+  <div class="paginator" *ngIf="filteredStarships.length">
+    <ul class="pagination">
+      <li class="page-item" (click)="changePage(previous_page)"><a class="page-link" >Anterior</a></li>
+      <li class="page-item" (click)="changePage(next_page)"><a class="page-link" >Próximo</a></li>
+    </ul>
+  </div>
+  </div>
+  

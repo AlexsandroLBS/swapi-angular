@@ -11,9 +11,18 @@ export class StarshipsService {
 constructor(private httpClient: HttpClient) { }
 
   getAllStarships(){
-    return this.httpClient.get<IStarships[]>(`${API_PATH}/starships`).toPromise();
+    return this.httpClient.get<IStarships[]>(`${API_PATH}/starships`);
   }
+
   getStarshipById(id: number){
     return this.httpClient.get<IStarships>(`${API_PATH}/starships/${id}`).toPromise();
+  }
+
+  getStarshipByUrl(url: string){
+    return this.httpClient.get<IStarships>(`${url}`).toPromise();
+  }
+
+  getStarshipsListByUrl(url: string){
+    return this.httpClient.get<IStarships[]>(`${url}`);
   }
 }
