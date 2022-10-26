@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IFilm } from '../interfaces/IFilms';
 import { IPeople } from '../interfaces/IPeople';
 import { IPlanets } from '../interfaces/IPlanets';
+import { ISpecies } from '../interfaces/ISpecies';
 import { IVehicles } from '../interfaces/IVehicles';
 import { ModalComponent } from '../modal/modal.component';
 import { FilmsService } from './films.service';
@@ -109,10 +110,10 @@ export class ModalService {
 
   //Vehicles
   getVehicleByUrl(url: string, set: boolean = true){
-    this.planetsService.getPlanetByUrl(url)
+    this.vehiclesService.getVehicleByUrl(url)
       .then((data) => {
-        this.planets = data
-        this.setInfoVehicles(this.planets)
+        this.vehicles = data
+        this.setInfoVehicles(this.vehicles)
       })
       .catch((error)=> console.log(error))
   }
@@ -122,5 +123,26 @@ export class ModalService {
     this.host.vehicle = data;
     this.host.vehicleFilms = this.getFilmsList(data.films);
     this.host.vehiclePilots = this.getPeopleList(data.pilots)
+  }
+
+  //Species
+
+  getSpecieByUrl(url: string, set: boolean = true){
+    this.planetsService.getPlanetByUrl(url)
+      .then((data) => {
+        this.species = data
+        this.setInfoSpecies(this.species)
+      })
+      .catch((error)=> console.log(error))
+  }
+
+  setInfoSpecies(data: ISpecies){
+    this.host.title = data.name;
+    this.host.specie = data;
+    this.host.specieFilms = this.getFilmsList(data.films);
+    this.host.speciePeople = this.getPeopleList(data.people);
+    this.planetsService.getPlanetByUrl(data.homeworld)
+    .then((data) => {this.host.homeworld = data.name});
+
   }
 }

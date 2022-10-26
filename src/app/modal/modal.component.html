@@ -49,7 +49,7 @@
             <p>Height: {{people.height}} cm</p>
           </div>
           <div id = "films-list">
-            <ul> Films List
+            <ul> Films
               <li *ngFor="let film of peopleFilms">
                 {{film}}
               </li>
@@ -99,7 +99,7 @@
             </ul>
           </div>
           <div id = "films-list">
-            <ul *ngIf="planetFilms.length"> <h3>Films List</h3>
+            <ul *ngIf="planetFilms.length"> <h3>Films</h3>
               <li *ngFor="let film of planetFilms">
                 {{film}}
               </li>
@@ -149,7 +149,7 @@
             </ul>
           </div>
           <div id = "films-list">
-            <ul *ngIf="vehicleFilms.length"> <h3>Films List</h3>
+            <ul *ngIf="vehicleFilms.length"> <h3>Films</h3>
               <li *ngFor="let film of vehicleFilms">
                 {{film}}
               </li>
@@ -159,8 +159,10 @@
       </div>
   </div>
 </div>
-<!-- Naves -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightStarships" aria-labelledby="offcanvasRightLabel">
+
+
+<!-- Species -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightSpecies" aria-labelledby="offcanvasRightLabel">
   <div *ngIf="!title"  class="d-flex justify-content-center">
     <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
       <span class="visually-hidden">Loading...</span>
@@ -171,11 +173,42 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    {{film}}
+    <div class="row justify-content-between">
+      <div class="col-4">
+        <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+      </div>
+      <div class="col-4">
+
+          <div *ngIf="specie" class="data-info" style="padding-bottom: 50px;">
+            <p>homeworld: {{ homeworld }}</p>
+            <p>Classification: {{ specie.classification }}</p>
+            <p>Designation: {{ specie.designation }}</p>
+            <p>Skin Colors: {{ specie.skin_colors }}</p>
+            <p>Language: {{ specie.language }}</p>
+
+          </div>
+          <div id = "films-list">
+            <ul *ngIf="speciePeople.length"><h3>People</h3>
+              <li *ngFor="let pilot of speciePeople">
+                {{pilot}}
+              </li>
+            </ul>
+          </div>
+          <div id = "films-list">
+            <ul *ngIf="specieFilms.length"> <h3>Films</h3>
+              <li *ngFor="let film of specieFilms">
+                {{film}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
-<!-- Espécies -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightSpecies" aria-labelledby="offcanvasRightLabel">
+
+
+<!-- Naves -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightStarships" aria-labelledby="offcanvasRightLabel">
   <div *ngIf="!title"  class="d-flex justify-content-center">
     <div  class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
       <span class="visually-hidden">Loading...</span>

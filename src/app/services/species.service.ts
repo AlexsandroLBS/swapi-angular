@@ -11,9 +11,17 @@ export class SpeciesService {
 constructor(private httpClient: HttpClient) { }
 
   getAllSpecies(){
-    return this.httpClient.get<ISpecies[]>(`${API_PATH}/species`).toPromise();
+    return this.httpClient.get<ISpecies[]>(`${API_PATH}/species`);
   }
   getSpecieById(id: number){
     return this.httpClient.get<ISpecies>(`${API_PATH}/species/${id}`).toPromise();
+  }
+
+  getSpecieByUrl(url: string){
+    return this.httpClient.get<ISpecies>(`${url}`).toPromise();
+  }
+
+  getSpeciesListByUrl(url: string){
+    return this.httpClient.get<ISpecies[]>(`${url}`);
   }
 }

@@ -14,8 +14,8 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Vehicle</th>
-        <!-- <th scope="col">Rotation Period</th>
-        <th scope="col">Orbital Period</th> -->
+        <th scope="col">Crew</th>
+        <th scope="col">Class</th>
       </tr>
     </thead>
     <tbody>
@@ -25,8 +25,8 @@
           aria-controls="offcanvasRight" (click)="getVehicleByUrl(vehicle.url)">Show Info</button>
         </td>
         <td>{{ vehicle.name }}</td>
-        <!-- <td>{{ vehicle.rotation_period }}h</td>
-        <td>{{ vehicle.orbital_period }} Days</td> -->
+        <td>{{ vehicle.crew }}</td>
+        <td>{{ vehicle.vehicle_class }}</td>
       </tr>
     </tbody>
   </table>

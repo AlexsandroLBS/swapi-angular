@@ -27,7 +27,7 @@ export class VehiclesComponent implements OnInit {
 
   public set filtroLista(value : string){
     this._filtroLista = value;
-    this.filteredVehicles= this.filtroLista ? this.filtrarVehicless(this.filtroLista) : this.vehicles;
+    this.filteredVehicles= this.filtroLista ? this.filtrarVehicles(this.filtroLista) : this.vehicles;
   }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class VehiclesComponent implements OnInit {
   this.modalService.getVehicleByUrl(url)
   }
 
-  filtrarVehicless(filtro : string) : any{
+  filtrarVehicles(filtro : string) : any{
     filtro = filtro.toLowerCase();
     return this.filteredVehicles.filter(
       (people : { name:string; url:string })=> people.name.toLocaleLowerCase().indexOf(filtro)!== -1

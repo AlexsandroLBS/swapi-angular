@@ -1,1 +1,41 @@
-<div class="page"></div>
+<div class="page">
+  <div class="form-inline">
+    <div class="form-group mb-2">
+      <input
+        type="text"
+        class="form-control mb-2"
+        placeholder="Busque por um evento"
+        [(ngModel)]="filtroLista"/>
+
+    </div>
+  </div>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Vehicle</th>
+        <th scope="col">Classification </th>
+        <th scope="col">Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let specie of filteredSpecies">
+        <td>
+          <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightSpecies"
+          aria-controls="offcanvasRight" (click)="getSpecieByUrl(specie.url)">Show Info</button>
+        </td>
+        <td>{{ specie.name }}</td>
+        <td>{{ specie.classification }}</td>
+        <td>{{ specie.language }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+<app-modal></app-modal>
+<div class="paginator">
+  <ul class="pagination">
+    <li class="page-item" (click)="changePage(previous_page)"><a class="page-link" >Anterior</a></li>
+    <li class="page-item" (click)="changePage(next_page)"><a class="page-link" >Próximo</a></li>
+  </ul>
+</div>
+</div>

@@ -34,6 +34,12 @@ export class ModalComponent implements OnInit {
   @Input() vehicleFilms: string[] = [];
   @Input() vehiclePilots: string[] = [];
 
+  //Species
+  @Input() specie: any = [];
+  @Input() specieFilms: string[] = [];
+  @Input() speciePeople: string[] = [];
+
+
   ngOnInit() {
     const myOffcanvasFilms = document.getElementById('offcanvasRightFilms') as any
     myOffcanvasFilms.addEventListener('hide.bs.offcanvas', () => {
