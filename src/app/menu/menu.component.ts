@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as bootstrap from 'bootstrap';
+
 import { ModalService } from '../services/modal.service';
 
 @Component({
@@ -9,12 +11,18 @@ import { ModalService } from '../services/modal.service';
 })
 
 export class MenuComponent implements OnInit{
-  constructor(private modalService: ModalService)
-  {}
+  constructor(private modalService: ModalService,
+              private router: ActivatedRoute)
+  {
+    this.id = router.snapshot.params.id;  
+  }
 
-  id?: number;
+  public id?: number;
 
   ngOnInit(): void {
+    if(this.id){
+      document.getElementById(`filme-${this.id}`)?.click();
+    }
   }
 
   setId(id: number){

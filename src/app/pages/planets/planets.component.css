@@ -19,3 +19,6 @@ table{
   justify-content: end;
 }
 
+#hiddenOffcanvasButton{
+  display: none;
+}

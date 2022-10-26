@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ISpecies } from 'src/app/interfaces/ISpecies';
 import { ModalService } from 'src/app/services/modal.service';
@@ -12,8 +13,12 @@ import { SpeciesService } from 'src/app/services/species.service';
 export class SpeciesComponent implements OnInit {
 
   constructor(private modalService: ModalService,
-              private speciesService: SpeciesService) {}
-
+              private speciesService: SpeciesService,
+              private router: ActivatedRoute) {
+      this.id = router.snapshot.params.id;
+    }
+  public id?: number;
+  
   public _filtroLista: string = '';
   public data: any = [];
   public species: any = [];
@@ -33,6 +38,10 @@ export class SpeciesComponent implements OnInit {
 
   ngOnInit() {
     this.initTable();
+    if(this.id){
+      this.getSpecieById(this.id) 
+      document.getElementById(`hiddenOffcanvasButton`)?.click();     
+    }
   }
 
   initTable(){
@@ -52,6 +61,10 @@ export class SpeciesComponent implements OnInit {
 
   getSpecieByUrl(url: string){
     this.modalService.getSpecieByUrl(url)
+  }
+
+  getSpecieById(id: number){
+    this.modalService.getSpecieById(id)
   }
 
   filtrarSpecies(filtro : string) : any{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IPlanets } from 'src/app/interfaces/IPlanets';
 import { ModalService } from 'src/app/services/modal.service';
@@ -12,8 +13,12 @@ import { PlanetsService } from 'src/app/services/planets.service';
 export class PlanetsComponent implements OnInit {
 
   constructor(private modalService: ModalService,
-              private planetsService: PlanetsService) {}
-
+              private planetsService: PlanetsService,
+              private router: ActivatedRoute) {
+  this.id = router.snapshot.params.id;
+}
+  
+  public id?: number;
   public _filtroLista: string = '';
   public data: any = [];
   public planets: any = [];
@@ -32,7 +37,11 @@ export class PlanetsComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.initTable();
+    this.initTable();
+    if(this.id){
+      this.getPlanetById(this.id) 
+      document.getElementById(`hiddenOffcanvasButton`)?.click(); 
+    }
   }
 
   initTable(){
@@ -59,6 +68,10 @@ export class PlanetsComponent implements OnInit {
 
   getPlanetByUrl(url: string){
     this.modalService.getPlanetByUrl(url)
+  }
+
+  getPlanetById(id: number){
+    this.modalService.getPlanetById(id)
   }
 
   changePage(url: string){

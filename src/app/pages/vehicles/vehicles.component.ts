@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IVehicles } from 'src/app/interfaces/IVehicles';
 import { ModalService } from 'src/app/services/modal.service';
@@ -11,8 +12,12 @@ import { VehiclesService } from 'src/app/services/vehicles.service';
 })
 export class VehiclesComponent implements OnInit {
   constructor(private modalService: ModalService,
-              private vehiclesService: VehiclesService) {}
+              private vehiclesService: VehiclesService,
+              private router: ActivatedRoute) {
+  this.id = router.snapshot.params.id;
+  }
 
+  public id?: number;
   public _filtroLista: string = '';
   public data: any = [];
   public vehicles: any = [];
@@ -32,6 +37,10 @@ export class VehiclesComponent implements OnInit {
 
   ngOnInit() {
   this.initTable();
+  if(this.id){
+    this.getVehicleById(this.id) 
+    document.getElementById(`hiddenOffcanvasButton`)?.click(); 
+  }
   }
 
   initTable(){
@@ -51,6 +60,10 @@ export class VehiclesComponent implements OnInit {
 
   getVehicleByUrl(url: string){
   this.modalService.getVehicleByUrl(url)
+  }
+  
+  getVehicleById(id: number){
+  this.modalService.getVehicleById(id)
   }
 
   filtrarVehicles(filtro : string) : any{

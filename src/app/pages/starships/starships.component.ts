@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IStarships } from 'src/app/interfaces/IStarships';
 import { ModalService } from 'src/app/services/modal.service';
@@ -12,7 +13,11 @@ import { StarshipsService } from 'src/app/services/starships.service';
 export class StarshipsComponent implements OnInit {
 
   constructor(private modalService: ModalService,
-              private starshipsService: StarshipsService) {}
+              private starshipsService: StarshipsService,
+              private router: ActivatedRoute) {
+  this.id = router.snapshot.params.id;
+  }
+  public id?: number;
 
   public _filtroLista: string = '';
   public data: any = [];
@@ -33,6 +38,10 @@ export class StarshipsComponent implements OnInit {
 
   ngOnInit() {
     this.initTable();
+    if(this.id){
+      this.getStarshipsById(this.id) 
+      document.getElementById(`hiddenOffcanvasButton`)?.click(); 
+    }
   }
 
   initTable(){
@@ -47,11 +56,16 @@ export class StarshipsComponent implements OnInit {
     }
 
   loadData(): Observable<IStarships[]>{
-  return this.starshipsService.getAllStarships()
+    return this.starshipsService.getAllStarships()
   }
 
   getStarshipsByUrl(url: string){
-  this.modalService.getStarshipsByUrl(url)
+    this.modalService.getStarshipsByUrl(url)
+  }
+
+  getStarshipsById(id: number){
+    this.modalService.getStarshipsById(id)
+    
   }
 
   filtrarStarships(filtro : string) : any{

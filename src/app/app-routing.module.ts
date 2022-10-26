@@ -11,11 +11,17 @@ import { VehiclesComponent } from './pages/vehicles/vehicles.component';
 const routes: Routes = [
   {path: '', redirectTo: '/menu/films', pathMatch: 'full' },
   {path: 'menu/films',  component: MenuComponent},
+  {path: 'menu/films/:id',  component: MenuComponent},
   {path: 'menu/starships', component: StarshipsComponent},
+  {path: 'menu/starships/:id', component: StarshipsComponent},
   {path: 'menu/people', component: PeopleComponent},
+  {path: 'menu/people/:id', component: PeopleComponent},
   {path: 'menu/vehicles', component: VehiclesComponent},
+  {path: 'menu/vehicles/:id', component: VehiclesComponent},
   {path: 'menu/species', component: SpeciesComponent},
-  {path: 'menu/planets', component:PlanetsComponent}
+  {path: 'menu/species/:id', component: SpeciesComponent},
+  {path: 'menu/planets', component:PlanetsComponent},
+  {path: 'menu/planets/:id', component:PlanetsComponent}
 ];
 
 @NgModule({

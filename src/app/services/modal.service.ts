@@ -73,6 +73,15 @@ export class ModalService {
     .catch((error)=> console.log(error))
   }
 
+  getPeopleById(id: number){
+    this.peopleService.getPeopleById(id)
+    .then((data) => {
+      this.people = data
+      this.setInfoPeople(this.people)
+    })
+    .catch((error)=> console.log(error))
+  }
+
   getPeopleList(people: string[]): string []{
     for(let i = 0; i < people.length; i++){
       this.peopleService.getPeopleByUrl(people[i])
@@ -102,6 +111,15 @@ export class ModalService {
       .catch((error)=> console.log(error))
     }
 
+  getPlanetById(id: number){
+    this.planetsService.getPlanetById(id)
+      .then((data) => {
+        this.planets = data
+        this.setInfoPlanets(this.planets)
+      })
+      .catch((error)=> console.log(error))
+    }
+
   setInfoPlanets(data: IPlanets){
     this.host.title = data.name;
     this.host.planet = data;
@@ -112,6 +130,15 @@ export class ModalService {
   //Vehicles
   getVehicleByUrl(url: string){
     this.vehiclesService.getVehicleByUrl(url)
+      .then((data) => {
+        this.vehicles = data
+        this.setInfoVehicles(this.vehicles)
+      })
+      .catch((error)=> console.log(error))
+  }
+
+  getVehicleById(id: number){
+    this.vehiclesService.getVehicleById(id)
       .then((data) => {
         this.vehicles = data
         this.setInfoVehicles(this.vehicles)
@@ -136,6 +163,15 @@ export class ModalService {
       .catch((error)=> console.log(error))
   }
 
+  getSpecieById(id: number){
+    this.planetsService.getPlanetById(id)
+      .then((data) => {
+        this.species = data
+        this.setInfoSpecies(this.species)
+      })
+      .catch((error)=> console.log(error))
+  }
+
   setInfoSpecies(data: ISpecies){
     this.host.title = data.name;
     this.host.specie = data;
@@ -150,6 +186,17 @@ export class ModalService {
   getStarshipsByUrl(url: string){
     this.starshipsService.getStarshipByUrl(url)
       .then((data) => {
+        this.starships = data;
+        this.setInfoStarships(this.starships);
+      })
+      .catch((error)=> console.log(error));
+  }
+
+  getStarshipsById(id: number){
+    this.starshipsService.getStarshipById(id)
+      .then((data) => {
+        console.log(`veio aqui`)
+        console.log(`veio aqui ${data}`)
         this.starships = data;
         this.setInfoStarships(this.starships);
       })

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IPeople } from 'src/app/interfaces/IPeople';
 import { ModalService } from 'src/app/services/modal.service';
@@ -14,8 +15,12 @@ import { PlanetsService } from 'src/app/services/planets.service';
 export class PeopleComponent implements OnInit {
   constructor(private peopleService: PeopleService,
               private modalService: ModalService,
-              private planetsService: PlanetsService) {}
-
+              private planetsService: PlanetsService,
+              private router: ActivatedRoute) {
+  this.id = router.snapshot.params.id;         
+              }
+  
+  public id?: number;            
   public _filtroLista: string = '';
   public data: any = [];
   public people: any = [];
@@ -35,6 +40,10 @@ export class PeopleComponent implements OnInit {
 
   ngOnInit() {
     this.initTable();
+    if(this.id){
+      this.getPeopleById(this.id) 
+      document.getElementById(`hiddenOffcanvasButton`)?.click(); 
+    }
   }
 
   initTable(){
@@ -60,7 +69,11 @@ export class PeopleComponent implements OnInit {
   }
 
   getPeopleByUrl(url: string){
-      this.modalService.getPeopleByUrl(url)
+    this.modalService.getPeopleByUrl(url)
+  }
+
+  getPeopleById(id: number){
+    this.modalService.getPeopleById(id)
   }
 
   changePage(url: string){
