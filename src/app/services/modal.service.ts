@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IFilm } from '../interfaces/IFilms';
 import { IPeople } from '../interfaces/IPeople';
 import { IPlanets } from '../interfaces/IPlanets';
+import { IVehicles } from '../interfaces/IVehicles';
 import { ModalComponent } from '../modal/modal.component';
 import { FilmsService } from './films.service';
 import { PeopleService } from './people.service';
@@ -46,22 +47,7 @@ export class ModalService {
     .catch((error)=> console.log(error))
   }
 
-  setInfoFilms(data: IFilm){
-    this.host.title = data.title;
-    this.host.film = data;
-  }
-
-  //PEOPLE
-  getPeopleByUrl(url: string){
-    this.peopleService.getPeopleByLink(url)
-    .then((data) => {
-      this.people = data
-      this.setInfoPeople(this.people)
-    })
-    .catch((error)=> console.log(error))
-  }
-
-  getPeopleFIlmsList(films: string[]): string []{
+  getFilmsList(films: string[]): string []{
     for(let i = 0; i < films.length; i++){
       this.filmsService.getFilmsByUrl(films[i])
       .then((data) => {films[i] = (data.title)})
@@ -70,9 +56,33 @@ export class ModalService {
     return films
   }
 
+  setInfoFilms(data: IFilm){
+    this.host.title = data.title;
+    this.host.film = data;
+  }
+
+  //PEOPLE
+  getPeopleByUrl(url: string){
+    this.peopleService.getPeopleByUrl(url)
+    .then((data) => {
+      this.people = data
+      this.setInfoPeople(this.people)
+    })
+    .catch((error)=> console.log(error))
+  }
+
+  getPeopleList(people: string[]): string []{
+    for(let i = 0; i < people.length; i++){
+      this.peopleService.getPeopleByUrl(people[i])
+      .then((data) => {people[i] = (data.name)})
+
+    }
+    return people
+  }
+
   setInfoPeople(data: IPeople){
     this.host.people = data;
-    this.host.peopleFilms = this.getPeopleFIlmsList(data.films);
+    this.host.peopleFilms = this.getFilmsList(data.films);
     this.planetsService.getPlanetByUrl(data.homeworld)
     .then((data) => {this.host.homeworld = data.name});
     this.peopleService.getPeopleImageById(data.url.split('/')[5])
@@ -90,29 +100,27 @@ export class ModalService {
       .catch((error)=> console.log(error))
     }
 
-  getPlanetsFilmsList(films: string[]): string []{
-    for(let i = 0; i < films.length; i++){
-      this.filmsService.getFilmsByUrl(films[i])
-      .then((data) => {films[i] = (data.title)})
-
-    }
-    return films
-  }
-
-  getPlanetsResidentsList(residents: string[]): string []{
-    for(let i = 0; i < residents.length; i++){
-      this.peopleService.getPeopleByLink(residents[i])
-      .then((data) => {residents[i] = (data.name)})
-
-    }
-    return residents
-  }
-
   setInfoPlanets(data: IPlanets){
     this.host.title = data.name;
     this.host.planet = data;
-    this.host.residents = this.getPlanetsResidentsList(data.residents);
-    this.host.filmsList = this.getPlanetsFilmsList(data.films);
+    this.host.residents = this.getPeopleList(data.residents);
+    this.host.planetFilms = this.getFilmsList(data.films);
+  }
 
+  //Vehicles
+  getVehicleByUrl(url: string, set: boolean = true){
+    this.planetsService.getPlanetByUrl(url)
+      .then((data) => {
+        this.planets = data
+        this.setInfoVehicles(this.planets)
+      })
+      .catch((error)=> console.log(error))
+  }
+
+  setInfoVehicles(data: IVehicles){
+    this.host.title = data.name;
+    this.host.vehicle = data;
+    this.host.vehicleFilms = this.getFilmsList(data.films);
+    this.host.vehiclePilots = this.getPeopleList(data.pilots)
   }
 }

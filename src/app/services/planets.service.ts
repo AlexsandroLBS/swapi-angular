@@ -9,23 +9,15 @@ import { IPlanets } from '../interfaces/IPlanets';
 export class PlanetsService {
 
 constructor(private httpClient: HttpClient) {}
-  name: string = ''
+
   getAllPlanets(){
     return this.httpClient.get<IPlanets[]>(`${API_PATH}/planets`);
   }
   getPlanetById(id: number){
     return this.httpClient.get<IPlanets>(`${API_PATH}/planets/${id}`).toPromise();
   }
-  async getPlanetByUrl(url: string){
+  getPlanetByUrl(url: string){
     return this.httpClient.get<IPlanets>(`${url}`).toPromise();
-  }
-
-  getPlanetName (url: string): string{
-    this.getPlanetByUrl(url)
-    .then((data) => {
-      this.name = data.name
-    })
-    return this.name
   }
 
   getPlanetsListByUrl(url: string){

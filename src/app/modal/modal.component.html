@@ -99,8 +99,8 @@
             </ul>
           </div>
           <div id = "films-list">
-            <ul *ngIf="filmsList.length"> <h3>Films List</h3>
-              <li *ngFor="let film of filmsList">
+            <ul *ngIf="planetFilms.length"> <h3>Films List</h3>
+              <li *ngFor="let film of planetFilms">
                 {{film}}
               </li>
             </ul>
@@ -123,7 +123,40 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    {{film}}
+    <div class="row justify-content-between">
+      <div class="col-4">
+        <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+      </div>
+      <div class="col-4">
+
+          <div *ngIf="vehicle" class="data-info" style="padding-bottom: 50px;">
+            <p>Cargo Capacity: {{ vehicle.cargo_capacity }}</p>
+            <p>Consumables: {{ vehicle.consumables }}</p>
+            <p>Cost In Credits: {{ vehicle.cost_in_credits }}</p>
+            <p>Crew: {{ vehicle.crew }}</p>
+            <p>Manufacturer: {{ vehicle.manufacturer }}</p>
+            <p>Max Atmosphering Speed: {{ vehicle.max_atmosphering_speed }}</p>
+            <p>Model: {{ vehicle.model }}</p>
+            <p>Passengers: {{ vehicle.passengers }}</p>
+            <p>Vehicle Class: {{ vehicle.vehicle_class }}</p>
+
+          </div>
+          <div id = "films-list">
+            <ul *ngIf="vehiclePilots.length"><h3>Pilots</h3>
+              <li *ngFor="let pilot of vehiclePilots">
+                {{pilot}}
+              </li>
+            </ul>
+          </div>
+          <div id = "films-list">
+            <ul *ngIf="vehicleFilms.length"> <h3>Films List</h3>
+              <li *ngFor="let film of vehicleFilms">
+                {{film}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
 <!-- Naves -->

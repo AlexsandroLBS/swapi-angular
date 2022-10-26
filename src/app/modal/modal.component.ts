@@ -15,26 +15,24 @@ export class ModalComponent implements OnInit {
 
   @Input() title: string = '';
 
-  
-
   //FILM
   @Input() film: any = [];
 
   //People
   @Input() people: any = [];
-
   @Input() homeworld: string = '';
   @Input() peopleFilms: string[] = [];
   @Input() image_url: string = '';
-  
+
   //Planet
   @Input() planet: any = [];
   @Input() residents: string[] = [];
-  @Input() filmsList: string[] = [];
+  @Input() planetFilms: string[] = [];
 
-
-
-
+  //Vehicles
+  @Input() vehicle: any = [];
+  @Input() vehicleFilms: string[] = [];
+  @Input() vehiclePilots: string[] = [];
 
   ngOnInit() {
     const myOffcanvasFilms = document.getElementById('offcanvasRightFilms') as any
