@@ -8,42 +8,53 @@ import { ModalService } from '../services/modal.service';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-
+  
   constructor( private modalService: ModalService) {
     this.modalService.host = this;
-   }
-
+  }
+  
   @Input() title: string = '';
-
+  @Input() PeopleIds: number[] = [];
+  @Input() FilmsIds: number[] = [];
+  
   //FILM
   @Input() film: any = [];
+  @Input() filmPeople: { id: string; data: string; }[] = [];
+  @Input() filmStarships: { id: string; data: string; }[] = [];
+  @Input() filmSpecies: { id: string; data: string; }[] = [];
+  @Input() filmVehicles: { id: string; data: string; }[] = [];
+  @Input() filmPlanets: { id: string; data: string; }[] = [];
 
   //People
   @Input() people: any = [];
   @Input() homeworld: string = '';
-  @Input() peopleFilms: string[] = [];
+  @Input() peopleFilms: { id: string; data: string; }[] = [];
+  @Input() peopleStarships: { id: string; data: string; }[] = [];
+  @Input() peopleSpecies: { id: string; data: string; }[] = [];
+  @Input() peopleVehicles: { id: string; data: string; }[] = [];
+  @Input() peoplePlanets: { id: string; data: string; }[] = [];
   @Input() image_url: string = '';
 
   //Planet
   @Input() planet: any = [];
-  @Input() residents: string[] = [];
-  @Input() planetFilms: string[] = [];
+  @Input() planetPeople: { id: string; data: string; }[] = [];
+  @Input() planetFilms: { id: string; data: string; }[] = [];
 
   //Vehicles
   @Input() vehicle: any = [];
-  @Input() vehicleFilms: string[] = [];
-  @Input() vehiclePilots: string[] = [];
+  @Input() vehicleFilms: { id: string; data: string; }[] = [];
+  @Input() vehiclePilots: { id: string; data: string; }[] = [];
 
   //Species
   @Input() specie: any = [];
-  @Input() specieFilms: string[] = [];
-  @Input() speciePeople: string[] = [];
+  @Input() specieFilms: { id: string; data: string; }[] = [];
+  @Input() speciePeople: { id: string; data: string; }[] = [];
    
 
   //Starships
    @Input() starships: any = [];
-   @Input() starshipsFilms: string[] = [];
-   @Input() starshipsPilots: string[] = [];
+   @Input() starshipsFilms: { id: string; data: string; }[] = [];
+   @Input() starshipsPilots: { id: string; data: string; }[] = [];
  
 
 
@@ -74,4 +85,6 @@ export class ModalComponent implements OnInit {
     })
 
   }
+
+  
 }

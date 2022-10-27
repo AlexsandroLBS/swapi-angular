@@ -34,7 +34,6 @@ export class ModalService {
               private vehiclesService: VehiclesService,
               private starshipsService: StarshipsService){}
 
-
   clearData(){
     this.host.title = '';
   }
@@ -49,18 +48,31 @@ export class ModalService {
     .catch((error)=> console.log(error))
   }
 
-  getFilmsList(films: string[]): string []{
+  getFilmsList(films: string[]){
+    let filmsList: { id: string; data: string; }[] = []
     for(let i = 0; i < films.length; i++){
       this.filmsService.getFilmsByUrl(films[i])
-      .then((data) => {films[i] = (data.title)})
+      .then((data) => {
+        let film = {
+          id: films[i].split('/')[5], 
+          data: data.title
+      }
+        filmsList.push(film)   
+      })
 
     }
-    return films
+    return filmsList
   }
 
   setInfoFilms(data: IFilm){
     this.host.title = data.title;
     this.host.film = data;
+
+    this.host.filmPeople = this.getPeopleList(data.characters)
+    this.host.filmPlanets = this.getPlanetList(data.planets)
+    this.host.filmStarships = this.getStarshipsList(data.starships)
+    this.host.filmVehicles = this.getVehiclesList(data.vehicles)
+    this.host.filmSpecies = this.getSpeciesList(data.species)
   }
 
   //PEOPLE
@@ -82,18 +94,29 @@ export class ModalService {
     .catch((error)=> console.log(error))
   }
 
-  getPeopleList(people: string[]): string []{
+  getPeopleList(people: string[]): {id: string; data: string;}[]{
+    let peopleList: { id: string; data: string; }[] = []
     for(let i = 0; i < people.length; i++){
       this.peopleService.getPeopleByUrl(people[i])
-      .then((data) => {people[i] = (data.name)})
-
+      .then((data) => {
+        let peopleData = {
+          id: people[i].split('/')[5], 
+          data: data.name
+      }
+        peopleList.push(peopleData)   
+      })
     }
-    return people
+    return peopleList
   }
+
 
   setInfoPeople(data: IPeople){
     this.host.people = data;
     this.host.peopleFilms = this.getFilmsList(data.films);
+    this.host.peopleSpecies = this.getSpeciesList(data.species);
+    this.host.peopleStarships = this.getStarshipsList(data.starships);
+    this.host.peopleVehicles = this.getVehiclesList(data.vehicles);
+    
     this.planetsService.getPlanetByUrl(data.homeworld)
     .then((data) => {this.host.homeworld = data.name});
     this.peopleService.getPeopleImageById(data.url.split('/')[5])
@@ -120,11 +143,28 @@ export class ModalService {
       .catch((error)=> console.log(error))
     }
 
+  getPlanetList(planet: string[]): {id: string; data: string;}[]{
+    let planetList: { id: string; data: string; }[] = []
+    for(let i = 0; i < planet.length; i++){
+      this.planetsService.getPlanetByUrl(planet[i])
+      .then((data) => {
+        let planetData = {
+          id: planet[i].split('/')[5], 
+          data: data.name
+      }
+        planetList.push(planetData)   
+      })
+    }
+    return planetList
+  }
+
   setInfoPlanets(data: IPlanets){
     this.host.title = data.name;
     this.host.planet = data;
-    this.host.residents = this.getPeopleList(data.residents);
+    
+    this.host.planetPeople = this.getPeopleList(data.residents);
     this.host.planetFilms = this.getFilmsList(data.films);
+    
   }
 
   //Vehicles
@@ -144,6 +184,21 @@ export class ModalService {
         this.setInfoVehicles(this.vehicles)
       })
       .catch((error)=> console.log(error))
+  }
+  
+  getVehiclesList(vehicles: string[]): {id: string; data: string;}[]{
+    let vehiclesList: { id: string; data: string; }[] = []
+    for(let i = 0; i < vehicles.length; i++){
+      this.vehiclesService.getVehicleByUrl(vehicles[i])
+      .then((data) => {
+        let vehiclesData = {
+          id: vehicles[i].split('/')[5], 
+          data: data.name
+      }
+        vehiclesList.push(vehiclesData)   
+      })
+    }
+    return vehiclesList
   }
 
   setInfoVehicles(data: IVehicles){
@@ -172,6 +227,22 @@ export class ModalService {
       .catch((error)=> console.log(error))
   }
 
+  getSpeciesList(species: string[]): {id: string; data: string;}[]{
+    let speciesList: { id: string; data: string; }[] = []
+    for(let i = 0; i < species.length; i++){
+      this.speciesService.getSpecieByUrl(species[i])
+      .then((data) => {
+        let speciesData = {
+          id: species[i].split('/')[5], 
+          data: data.name
+      }
+        speciesList.push(speciesData)   
+      })
+    }
+    return speciesList
+  }
+
+
   setInfoSpecies(data: ISpecies){
     this.host.title = data.name;
     this.host.specie = data;
@@ -195,12 +266,25 @@ export class ModalService {
   getStarshipsById(id: number){
     this.starshipsService.getStarshipById(id)
       .then((data) => {
-        console.log(`veio aqui`)
-        console.log(`veio aqui ${data}`)
         this.starships = data;
         this.setInfoStarships(this.starships);
       })
       .catch((error)=> console.log(error));
+  }
+
+  getStarshipsList(starships: string[]): {id: string; data: string;}[]{
+    let starshipsList: { id: string; data: string; }[] = []
+    for(let i = 0; i < starships.length; i++){
+      this.starshipsService.getStarshipByUrl(starships[i])
+      .then((data) => {
+        let starshipsData = {
+          id: starships[i].split('/')[5], 
+          data: data.name
+      }
+        starshipsList.push(starshipsData)   
+      })
+    }
+    return starshipsList
   }
 
   setInfoStarships(data: IStarships){
