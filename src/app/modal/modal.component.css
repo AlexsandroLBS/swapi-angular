@@ -2,7 +2,9 @@
   background-color: #212529;
   width: 1000px;
   color: white;
+
 }
+
 h2{
   font-size: 50px;
   border-color: yellow;
@@ -19,4 +21,7 @@ h2{
   padding-left: 5%;
 }
 
+#offcanvasRightFilms{
+  overflow: scroll;
+}
 
