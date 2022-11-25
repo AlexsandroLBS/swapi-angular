@@ -8,15 +8,15 @@ import { ModalService } from '../services/modal.service';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-  
+
   constructor( private modalService: ModalService) {
     this.modalService.host = this;
   }
-  
+  @Input() image_url: string = '';
   @Input() title: string = '';
   @Input() PeopleIds: number[] = [];
   @Input() FilmsIds: number[] = [];
-  
+
   //FILM
   @Input() film: any = [];
   @Input() filmPeople: { id: string; data: string; }[] = [];
@@ -33,7 +33,7 @@ export class ModalComponent implements OnInit {
   @Input() peopleSpecies: { id: string; data: string; }[] = [];
   @Input() peopleVehicles: { id: string; data: string; }[] = [];
   @Input() peoplePlanets: { id: string; data: string; }[] = [];
-  @Input() image_url: string = '';
+
 
   //Planet
   @Input() planet: any = [];
@@ -49,13 +49,12 @@ export class ModalComponent implements OnInit {
   @Input() specie: any = [];
   @Input() specieFilms: { id: string; data: string; }[] = [];
   @Input() speciePeople: { id: string; data: string; }[] = [];
-   
 
   //Starships
    @Input() starships: any = [];
    @Input() starshipsFilms: { id: string; data: string; }[] = [];
    @Input() starshipsPilots: { id: string; data: string; }[] = [];
- 
+
 
 
   ngOnInit() {
@@ -86,5 +85,5 @@ export class ModalComponent implements OnInit {
 
   }
 
-  
+
 }
