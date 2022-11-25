@@ -23,8 +23,8 @@
 
       <div class="row justify-content-between">
         <div class="col-2">
-          <div class="film-list"><h3>Characters</h3>
-            <ul *ngIf="filmPeople.length">
+          <div *ngIf="filmPeople.length" class="film-list"><h3>Characters</h3>
+            <ul >
               <li *ngFor="let people of filmPeople">
                 <a href="menu/people/{{people.id}}">{{people.data}}</a>
               </li>
@@ -32,8 +32,8 @@
           </div>
         </div>
           <div class="col-3">
-          <div class="film-list"><h3>Species</h3>
-            <ul *ngIf="filmSpecies.length">
+          <div *ngIf="filmSpecies.length" class="film-list"><h3>Species</h3>
+            <ul >
               <li *ngFor="let specie of filmSpecies">
                 <a href="menu/species/{{specie.id}}">{{specie.data}}</a>
               </li>
@@ -41,16 +41,16 @@
           </div>
         </div>
         <div class="col-4">
-          <div class="film-list"><h3>Vehicles</h3>
-            <ul *ngIf="filmVehicles.length">
+          <div *ngIf="filmVehicles.length" class="film-list"><h3>Vehicles</h3>
+            <ul >
               <li *ngFor="let vehicle of filmVehicles">
                 <a href="menu/vehicles/{{vehicle.id}}">{{vehicle.data}}</a>
               </li>
             </ul>
           </div>
 
-          <div class="film-list"><h3>Starships</h3>
-            <ul *ngIf="filmStarships.length">
+          <div *ngIf="filmStarships.length" class="film-list"><h3>Starships</h3>
+            <ul >
               <li *ngFor="let starship of filmStarships">
                 <a href="menu/starships/{{starship.id}}">{{starship.data}}</a>
               </li>
@@ -80,7 +80,7 @@
     <div class="offcanvas-body">
       <div class="row justify-content-between">
         <div class="col-4">
-          <img src="{{image_url}}" style="max-width: 500px; padding-left: 10%;" alt="character_image">
+          <img src="{{image_url}}" style="max-width: 500px; padding-left: 10%;" alt="{{title}}_image">
         </div>
         <div class="col-4"><h3>Character Info</h3>
           <div class="data-info" style="padding-bottom: 50px;">
@@ -90,7 +90,7 @@
             <p>Weight: {{people.mass}} Kg</p>
             <p>Height: {{people.height}} cm</p>
           </div>
-          <div class="film-list"><h3>Films</h3>
+          <div *ngIf="peopleFilms.length" class="film-list"><h3>Films</h3>
             <ul>
               <li *ngFor="let film of peopleFilms">
                 <a href="menu/films/{{film.id}}">{{film.data}}</a>
@@ -119,8 +119,7 @@
 
         <div class="row justify-content-between">
         <div class="col-4">
-          <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
-        </div>
+          <img src="{{image_url}}" style="max-width: 350px; padding-left: 10%;" alt="{{title}}_image">        </div>
         <div class="col-4">
           <div *ngIf="planet" class="data-info" style="padding-bottom: 50px;">
             <p>Rotation Period: {{ planet.rotation_period }} h</p>
@@ -133,15 +132,15 @@
             <p>Population: {{ planet.population }}</p>
 
           </div>
-          <div class="film-list"><h3>Residents</h3>
-            <ul *ngIf="peopleFilms.length">
+          <div *ngIf="peopleFilms.length" class="film-list"><h3>Residents</h3>
+            <ul >
               <li *ngFor="let resident of peopleFilms">
                 <a href="menu/people/{{resident.id}}">{{resident.data}}</a>
               </li>
             </ul>
           </div>
-          <div class="film-list"><h3>Films</h3>
-            <ul *ngIf="planetFilms.length">
+          <div *ngIf="planetFilms.length" class="film-list"><h3>Films</h3>
+            <ul >
               <li *ngFor="let film of planetFilms">
                 <a href="menu/films/{{film.id}}">{{film.data}}</a>
               </li>
@@ -169,7 +168,7 @@
         <div class="offcanvas-body">
           <div class="row justify-content-between">
             <div class="col-4">
-              <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
+              <img src="{{image_url}}" style="max-width: 350px; padding-left: 10%;" alt="{{title}}_image">
             </div>
             <div class="col-4">
 
@@ -185,15 +184,15 @@
               <p>Vehicle Class: {{ vehicle.vehicle_class }}</p>
 
             </div>
-            <div class="film-list"><h3>Pilots</h3>
-              <ul *ngIf="vehiclePilots.length">
+            <div *ngIf="vehiclePilots.length" class="film-list"><h3>Pilots</h3>
+              <ul >
                 <li *ngFor="let pilot of vehiclePilots">
                   <a href="menu/people/{{pilot.id}}">{{pilot.data}}</a>
                 </li>
               </ul>
             </div>
-            <div class="film-list"><h3>Films</h3>
-              <ul *ngIf="vehicleFilms.length">
+            <div *ngIf="vehicleFilms.length" class="film-list"><h3>Films</h3>
+              <ul >
                 <li *ngFor="let film of vehicleFilms">
                   <a href="menu/films/{{film.id}}">{{film.data}}</a>
                 </li>
@@ -220,9 +219,8 @@
     </div>
     <div class="offcanvas-body">
       <div class="row justify-content-between">
-        <div class="col-4">
-          <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
-        </div>
+        <div class="col-4" >
+          <img src="{{image_url}}" style="max-width: 350px; padding-left: 10%;" alt="{{title}}_image">        </div>
         <div class="col-4">
           <h3>Specie Info</h3>
           <div *ngIf="specie" class="data-info" style="padding-bottom: 50px;">
@@ -233,15 +231,15 @@
             <p>Language: {{ specie.language }}</p>
 
           </div>
-          <div class="film-list"><h3>People</h3>
-            <ul *ngIf="speciePeople.length">
+          <div *ngIf="speciePeople.length" class="film-list"><h3>People</h3>
+            <ul >
               <li *ngFor="let people of speciePeople">
                 <a href="menu/people/{{people.id}}">{{people.data}}</a>
               </li>
             </ul>
           </div>
-          <div class="film-list"><h3>Films</h3>
-            <ul *ngIf="specieFilms.length">
+          <div *ngIf="specieFilms.length" class="film-list"><h3>Films</h3>
+            <ul >
               <li *ngFor="let film of specieFilms">
                 <a href="menu/films/{{film.id}}">{{film.data}}</a>
               </li>
@@ -271,8 +269,7 @@
     <div class="offcanvas-body">
       <div class="row justify-content-between">
         <div class="col-4">
-          <!-- <img src="{{}}" style="max-width: 350px; padding-left: 10%;" alt="planet_image"> -->
-        </div>
+          <img src="{{image_url}}" style="max-width: 350px; padding-left: 10%;" alt="{{title}}_image">        </div>
         <div class="col-4">
             <h3>Starship Info</h3>
             <div *ngIf="starships" class="data-info" style="padding-bottom: 50px;">
@@ -288,15 +285,15 @@
               <p>MGLT: {{ starships.MGLT }}</p>
 
             </div>
-            <div class="film-list"><h3>People</h3>
-              <ul *ngIf="starshipsPilots.length">
+            <div *ngIf="starshipsPilots.length" class="film-list"><h3>People</h3>
+              <ul >
                 <li *ngFor="let pilot of starshipsPilots">
                   <a href="menu/people/{{pilot.id}}">{{pilot.data}}</a>
                 </li>
               </ul>
             </div>
-            <div class="film-list"><h3>Films</h3>
-              <ul *ngIf="starshipsFilms.length">
+            <div *ngIf="starshipsFilms.length" class="film-list"><h3>Films</h3>
+              <ul >
                 <li *ngFor="let film of starshipsFilms">
                   <a href="menu/films/{{film.id}}">{{film.data}}</a>
                 </li>
