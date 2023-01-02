@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { createClient } from 'pexels';
 import { BING_API, BING_HOST, BING_KEY } from 'src/environments/environment';
 import { IImage } from '../interfaces/IImages';
 
