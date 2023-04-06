@@ -6,9 +6,6 @@ The project scope is create a web page to consume [SWAPI](https://swapi.dev/docu
 vehicles, planets and species. Some of the styled components were from [Bootstrap](https://getbootstrap.com/).
 
 The project is available at: [https://desafio-ascan.vercel.app](https://desafio-ascan.vercel.app)
-## Local run
-
-Run `npm install` to install modules and `npm start`
 
 ## Development server
 
